@@ -26,19 +26,46 @@ template "/tmp/iManager_install.properties" do
   mode "0644"  
 end
 
-script "Install iManager and plugins" do
-  interpreter "bash"
-  user "root"
-  cwd "/tmp"
-  code <<-EOH    
-  \"#{imanager_build_loc}\" -DIA_USER_JRE_HOME=\"#{jre_loc}\" -i silent -f \"/tmp/iManager_install.properties\"; "  
-  " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_iman_npm}\" ;" 
- " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_idm_npm}\" ;" 
- " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_edir_npm}\" ;" 
- " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_pwd_npm}\" ;" 
- " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_nmas_npm}\" ;"
- 
-  EOH
+execute "Install iManager" do
+ user "root" 
+ cwd "/tmp"
+ command " \"#{imanager_build_loc}\" -DIA_USER_JRE_HOME=\"#{jre_loc}\" -i silent -f \"/tmp/iManager_install.properties\"; "  
+ action :run
+end
+
+execute "Install iManager Base plugin" do
+ user "root" 
+ cwd "/tmp"
+ command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_iman_npm}\" ;" 
+ action :run
+end
+
+execute "Install iManager IDM plugin" do
+ user "root" 
+ cwd "/tmp"
+ command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_iman_npm}\" ;" 
+ action :run
+end
+
+execute "Install iManager eDir plugin" do
+ user "root" 
+ cwd "/tmp"
+ command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_edir_npm}\" ;" 
+ action :run
+end
+
+execute "Install iManager Pwd Mgmt plugin" do
+ user "root" 
+ cwd "/tmp"
+ command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_pwd_npm}\" ;"
+ action :run
+end
+
+execute "Install iManager NMAS plugin" do
+ user "root" 
+ cwd "/tmp"
+ command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_nmas_npm}\" ;"
+ action :run
 end
 
 
