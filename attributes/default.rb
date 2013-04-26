@@ -19,6 +19,7 @@
 
 default['imanager']['imanager_build_loc'] = "/home/vagrant/IDM402AE/test/products/iManager/installs/linux/iManagerInstallLinux.bin"
 default['imanager']['imanager_nmps_build_loc'] = "/home/vagrant/IDM402AE/test/products/iManager/installs/linux/configuration/iManInstallNPMs.jar"
+default['imanager']['imanager_configure_build_loc'] = "/home/vagrant/IDM402AE/test/products/iManager/installs/linux/configuration/iManagerConfig.jar"
 default['imanager']['imanager_webapps'] = "/var/opt/novell/tomcat5/webapps/nps"
 default['imanager']['imanager_work_catalina'] = "/var/opt/novell/tomcat5/work/Catalina/localhost/nps"
 default['imanager']['imanager_iman_npm'] = "/home/vagrant/IDM402AE/test/products/iManager/imansp.npm"
@@ -28,3 +29,5 @@ default['imanager']['imanager_pwd_npm'] = "/home/vagrant/IDM402AE/test/products/
 default['imanager']['imanager_nmas_npm'] = "/home/vagrant/IDM402AE/test/products/iManager/installs/plugins/nmas.npm"
 
 default['imanager']['jre_loc'] = "/root/idm/jre"
+default['imanager']['imanager_http_port'] = "8080"
+default['imanager']['imanager_https_port'] = "8443"
