@@ -69,5 +69,12 @@ execute "Install iManager NMAS plugin" do
 end
 
 
+execute "Install IDM plugins" do
+ user "root" 
+ cwd "/tmp"
+ command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_idm_npm}\" ;"
+ action :run
+end
+
 
 
