@@ -23,6 +23,7 @@ end
 execute "Configure iManager" do
  user "root" 
  cwd "/tmp"
- command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_configure_build_loc}\" \"#{imanager_http_port}\" \"#{imanager_https_port}\" "  
+ command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_configure_build_loc}\" \"#{imanager_http_port}\" \"#{imanager_https_port}\" > /var/opt/novell/log/iManager-configure.log "  
+  creates "/var/opt/novell/log/iManager-configure.log"
  action :run
 end
