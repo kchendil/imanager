@@ -63,6 +63,7 @@ execute "Install iManager NMAS plugin" do
  cwd "/tmp"
  command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_nmas_npm}\" > /var/opt/novell/log/imanager_nmas_plugin.log ;"
  creates "/var/opt/novell/log/imanager_nmas_plugin.log"
+  not_if { ::File.exists?("/var/opt/novell/log/imanager_nmas_plugin.log")}
  action :run
 end
 
@@ -72,6 +73,7 @@ execute "Install IDM plugins" do
  cwd "/tmp"
  command " \"#{jre_loc}/bin/java\" -jar \"#{imanager_nmps_build_loc}\" install #{imanager_webapps} #{imanager_work_catalina} \"#{imanager_idm_npm}\" > /var/opt/novell/log/imanager_idm_plugin.log;"
  creates "/var/opt/novell/log/imanager_idm_plugin.log"
+  not_if { ::File.exists?("/var/opt/novell/log/imanager_idm_plugin.log")}
  action :run
 end
 
